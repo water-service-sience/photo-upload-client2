@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string name="home">ホーム</string>	
+	<string name="settings">設定</string>
+	<string name="openWindow">新しいウインドを開く</string>
+	<string name="newWindow">新しいウインド</string>
+	<string name="create">作成</string>
+	<string name="map">地図</string>
+	<string name="refresh">更新</string>
+	<string name="update">更新</string>
+	<string name="camera">カメラ</string>
+	<string name="latLon">経度緯度</string>
+	<string name="prevMonth">先月</string>
+	<string name="nextMonth">来月</string>
+	<string name="nickname">ニックネーム</string>
+	<string name="gallary">ギャラリー</string>
+	<string name="capturePhoto">写真を撮る</string>
+	<string name="owner">投稿者</string>
+	<string name="photo">写真</string>
+	<string name="editPhoto">写真の編集</string>
+	<string name="comment">コメント</string>
+	<string name="upload">アップロード</string>
+	<string name="veryGood">とても良い</string>
+	<string name="good">良い</string>
+	<string name="slightlyGood">やや良い</string>
+	<string name="soso">普通</string>
+	<string name="slightlyBad">やや悪い</string>
+	<string name="bad">悪い</string>
+	<string name="veryBad">とても悪い</string>
+	<string name="yourPhotos">自分の写真</string>
+</resources>
