@@ -46,12 +46,10 @@
     <mobileweb>
         <precache/>
         <splash>
-            <enabled>true</enabled>
+            <enabled>false</enabled>
             <inline-css-images>true</inline-css-images>
         </splash>
         <theme>default</theme>
     </mobileweb>
-    <modules>
-        <module platform="commonjs" version="2.3.0">ti.cloud</module>
-    </modules>
+    <modules/>
 </ti:app>

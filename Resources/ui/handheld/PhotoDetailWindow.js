@@ -6,14 +6,18 @@ function PhotoDetailWindow(client,photo){
 		title:L("photo"),
 		tabBarHidden:true
 	});
-	
-	
 	var image = Ti.UI.createImageView({
+		image:"images/now_loading.png",
 		left:"20%",
 		top:"5%",
-		width:"60%",
-		height:"30%",
-		image:client.photoBaseUrl + photo.resourceKey
+		right:"20%",
+		height:"30%"
+	});
+	
+	client.getImage(photo,function(data){
+		if(data){
+		    image.image = data;
+		}
 	});
 	self.add(image);
 	

@@ -5,13 +5,18 @@ function PhotoEditWindow(client,photo){
 		title:L("editPhoto"),
 		tabBarHidden:true
 	});
-	
 	var image = Ti.UI.createImageView({
+		image:"images/now_loading.png",
 		left:"10%",
 		top:"5%",
 		width:"80%",
 		height:"50%",
-		image:client.photoBaseUrl + photo.resourceKey
+	});
+	
+	client.getImage(photo,function(data){
+		if(data){
+		    image.image = data;
+		}
 	});
 	self.add(image);
 	

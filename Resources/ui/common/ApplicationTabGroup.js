@@ -31,6 +31,7 @@ function ApplicationTabGroup(Window) {
 	
 		
 	self.addEventListener("open", function() {
+		//client.logout();
 		if (!client.isLogin()) {
 			var LoginWindow = require("ui/handheld/LoginWindow");
 			var loginWindow = new LoginWindow(client);

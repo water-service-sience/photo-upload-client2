@@ -11,13 +11,13 @@ function CalendarWindow(client){
 	var year = now.getYear() + 1900;
 	
 	var prevButton = catalogue.createButton({
-		title:L("prev month"),
+		title:L("prevMonth"),
 		top:"1%",
 		left:"3%"
 	});
 	self.add(prevButton);
 	var nextButton = catalogue.createButton({
-		title:L("next month"),
+		title:L("nextMonth"),
 		top:"1%",
 		right:"3%"
 	});
@@ -48,7 +48,7 @@ function CalendarWindow(client){
 	});
 	self.add(photoListView);
 	
-	var dayOfWeek = ["sun","mon","tue","wed","the","fri","sut"];
+	var dayOfWeek = ["sun","mon","tue","wed","thu","fri","sat"];
 	var daysOfMonth = [0,31,28,31,30,31,30,31,31,30,31,30,31];
 	if(year %4 == 0){
 		daysOfMonth[2] = daysOfMonth[2] + 1;
@@ -165,19 +165,27 @@ function CalendarWindow(client){
 		
 		for(var i in photos){
 			var p = photos[i];
+			
 			var image = Ti.UI.createImageView({
-				image : client.photoBaseUrl + p.resourceKey,
+				image : "images/now_loading.png",
 				top:0,
 				left:(20 * i) + "%",
 				width:"20%",
 				height:"100%",
 				photo:p
 			});
+
+			client.getImage(p, function(data,imageView) {
+				if (data) {
+					imageView.image = data;
+				}
+			},image); 
 			photoListView.add(image);
 			
 			image.addEventListener("click",function(e){
 				var photo = e.source.photo;
 				var win = new PhotoDetailWindow(client,photo);
+				win.containingTab = self.containingTab;
 				self.containingTab.open(win);
 			});
 		}

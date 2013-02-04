@@ -54,15 +54,35 @@ function createClient(){
 			return null;
 		}
 	};
-	
+	var imageCache = [];
+	var cacheSize = 5;
+	var getImageFromCache = function( key ){
+		for(var i in imageCache){
+			var image = imageCache[i];
+			if(image.key == key){
+				return image.data;
+			}
+		}
+		return null;
+	} 
+	var addToCache = function(key,data){
+		imageCache.push({
+			key:key,
+			data:data
+		});
+		if(imageCache.length > cacheSize){
+			imageCache.pop();
+		}
+		
+	}
 	
 	
 	var client = {
 		accessKey : "",
-		url : "http://localhost:8080/",
-		//url : "http://de24.digitalasia.chubu.ac.jp/photo-gather/",
-		//photoBaseUrl:"http://de24.digitalasia.chubu.ac.jp/photo-gather/images/uploaded/",
-		photoBaseUrl:"http://localhost:8080/images/uploaded/",
+		//url : "http://localhost:8080/",
+		//photoBaseUrl:"http://localhost:8080/images/uploaded/",
+		url : "http://de24.digitalasia.chubu.ac.jp/photo-gather/",
+		photoBaseUrl:"http://de24.digitalasia.chubu.ac.jp/photo-gather/images/uploaded/",
 		onSuccessToLogin : function(){},
 		onFailToLogin : function(){},
 		isLogin : function() {
@@ -125,6 +145,7 @@ function createClient(){
 		}, 
 		logout: function(){
 			execQuery(["delete from KVS;"]);
+			client.accessKey = null;
 		},
 		upload :function(image,progressCallback, finishCallback) {
 			var c = Ti.Network.createHTTPClient({
@@ -254,6 +275,33 @@ function createClient(){
 				}
 			});
 			c.open("GET", url);
+			
+			c.setRequestHeader(AccessKeyHeader,client.accessKey);
+			c.send();
+		},
+		getImage : function(photo, callback, args){
+			var photoUrl = client.photoBaseUrl + photo.resourceKey;
+			
+			var fromCache = getImageFromCache(photoUrl);
+			if(fromCache != null){
+				Ti.API.debug("Get from cache:" + photoUrl);
+				callback(fromCache,args);
+				return;
+			}			
+			Ti.API.debug("Download image : " + photoUrl);
+			var c =  Ti.Network.createHTTPClient({
+				onload : function(e) {
+					var data = this.responseData;
+					Ti.API.info("Success to get image");
+					addToCache(photoUrl,data);
+					callback(data,args);
+				},
+				onerror : function(e) {
+				    Ti.API.info("Fail to get image." + e);
+				    callback(null,args);
+				}
+			});
+			c.open("GET", photoUrl);
 			
 			c.setRequestHeader(AccessKeyHeader,client.accessKey);
 			c.send();
