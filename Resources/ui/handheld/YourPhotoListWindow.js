@@ -9,6 +9,13 @@ function YourPhotoListWindow(client){
 		tabBarHidden:true
 	});
 	
+	var table = Ti.UI.createTableView({
+		height:"90%",
+		top:0,
+		left:0,
+		width:"100%"
+	});
+	self.add(table);
 	var refresh = function(){
 	    client.getSelfUploadPhotos(function(photos){
 	    	Ti.API.debug(photos.length + " photos");
@@ -69,13 +76,6 @@ function YourPhotoListWindow(client){
 
 	    });
 	}
-	var table = Ti.UI.createTableView({
-		height:"90%",
-		top:0,
-		left:0,
-		width:"100%"
-	});
-	self.add(table);
 	var refreshButton = catalogue.createButton({
 		title:L("refresh"),
 		bottom:0,

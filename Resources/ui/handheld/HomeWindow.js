@@ -72,10 +72,11 @@ function HomeWindow(client){
     	Ti.API.debug("Update alerts");
 		client.getAlerts(function(r) {
 			var data = [];
+			Ti.API.debug("There are " + r.length + " alerts");
 			for (var i in r) {
 				var p = r[i];
 				data.push({
-					title :L("latLon") + ":" + p.latitude.slice(0,5) + " , " + p.longitude.slice(0,5),
+					title :L("latLon") + ":" + ("" + p.latitude).slice(0,5) + " , " + ("" + p.longitude).slice(0,5),
 					photo:p
 				});
 			}
@@ -83,8 +84,11 @@ function HomeWindow(client){
 		});
 	};
     problemPlacesTable.addEventListener("click",function(e){
-		var row = e.row;
-		var w = new PhotoDetailWindow(client,row.photo);
+		var photo = null;
+		if(e.source && e.source.photo) photo = e.row.photo;
+		else if(e.row && e.row.photo) photo = e.row.photo;
+		else if(e.rowData && e.rowData.photo) photo = e.rowData.photo;
+		var w = new PhotoDetailWindow(client,photo);
 		w.containingTab = self.containingTab;
 	    self.containingTab.open(w);
 	});
