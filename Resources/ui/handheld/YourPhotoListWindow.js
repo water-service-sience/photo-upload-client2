@@ -1,5 +1,8 @@
 
 function YourPhotoListWindow(client){
+	var CallWindow = require("ui/handheld/CallWindow");
+	var PhotoEditWindow = require("ui/handheld/PhotoEditWindow");
+	
 	var catalogue = require("ui/common/UICatalogue");
 	var self = catalogue.createWindow({
 		title:L("yourPhotos"),
@@ -22,8 +25,35 @@ function YourPhotoListWindow(client){
 		    	row.add(catalogue.createLabel({
 		    		left:"0%",
 		    		top:"2%",
+		   			width:"60%",
 		    		text:L("captured") + ":" + String.formatTime(date) + " " + String.formatDate(date) 
 		    	}));
+		    	
+		    	var editButton = catalogue.createButton({
+		    		title:L("edit"),
+		    		left:"60%",
+		    		width:"20%",
+		    		photo:p
+		    	});
+		    	row.add(editButton);
+		    	editButton.addEventListener("click",function(e){
+		    		var p = e.source.photo;
+		            var w = new PhotoEditWindow(client,p);
+	                self.containingTab.open(w);
+		    	});
+		    	var callButton = catalogue.createButton({
+		    		title:L("call"),
+		    		left:"80%",
+		    		width:"20%",
+		    		photo:p
+		    	});
+		    	
+		    	row.add(callButton);
+		    	callButton.addEventListener("click",function(e){
+		    		var p = e.source.photo;
+		            var w = new CallWindow(p);
+	                self.containingTab.open(w);
+		    	});
 		    	data.push(row);
 		    }
 		    /*self.remove(table);
@@ -55,13 +85,12 @@ function YourPhotoListWindow(client){
 	})
 	self.add(refreshButton);
 	refreshButton.addEventListener("click",refresh);
-	var PhotoEditWindow = require("ui/handheld/PhotoEditWindow");
 	
-	table.addEventListener("click",function(e){
+	/*table.addEventListener("click",function(e){
 		var row = e.row;
 		var w = new PhotoEditWindow(client,row.photo);
 	    self.containingTab.open(w);
-	});
+	});*/
 	
 	refresh();
 	

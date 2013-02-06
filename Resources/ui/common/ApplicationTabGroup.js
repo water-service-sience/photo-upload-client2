@@ -15,13 +15,13 @@ function ApplicationTabGroup(Window) {
 	
 	var homeTab = Ti.UI.createTab({
 		title:L("home"),
-		icon: "/images/KS_nav_ui.png",
+		icon: "/images/KS_nav_home.png",
 		window: homeWindow
 	});
 	homeWindow.containingTab = homeTab;
 	var cameraTab = Ti.UI.createTab({
 		title:L("camera"),
-		icon: "/images/KS_nav_ui.png",
+		icon: "/images/KS_nav_camera.png",
 		window: cameraWindow
 	});
 	cameraWindow.containingTab = cameraTab;

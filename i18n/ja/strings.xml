@@ -28,4 +28,22 @@
 	<string name="bad">悪い</string>
 	<string name="veryBad">とても悪い</string>
 	<string name="yourPhotos">自分の写真</string>
+	<string name="calendar">カレンダー</string>
+	<string name="problemPlaces">問題のある場所</string>
+	<string name="captured">撮影日</string>
+	<string name="goodness">評価</string>
+	<string name="month1">１月</string>
+	<string name="month2">２月</string>
+	<string name="month3">３月</string>
+	<string name="month4">４月</string>
+	<string name="month5">５月</string>
+	<string name="month6">６月</string>
+	<string name="month7">７月</string>
+	<string name="month8">８月</string>
+	<string name="month9">９月</string>
+	<string name="month10">１０月</string>
+	<string name="month11">１１月</string>
+	<string name="month12">１２月</string>
+	<string name="call">連絡</string>
+	<string name="edit">編集</string>
 </resources>

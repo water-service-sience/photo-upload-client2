@@ -136,7 +136,7 @@ function CalendarWindow(client){
 			}
 			
 		});
-		monthLabel.text = month + "month";
+		monthLabel.text = L("month" + month);
 		for (var i = 0; i < 7; i++) {
 			calendarView.add(catalogue.createLabel({
 				text : dayOfWeek[i],

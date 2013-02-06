@@ -75,7 +75,7 @@ function HomeWindow(client){
 			for (var i in r) {
 				var p = r[i];
 				data.push({
-					title :L("latLon") + ":" + p.latitude + " , " + p.longitude,
+					title :L("latLon") + ":" + p.latitude.slice(0,5) + " , " + p.longitude.slice(0,5),
 					photo:p
 				});
 			}

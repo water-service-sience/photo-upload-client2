@@ -28,4 +28,23 @@
 	<string name="bad">Bad</string>
 	<string name="veryBad">Very bad</string>
 	<string name="yourPhotos">Your photos</string>
+	
+	<string name="calendar">Calendar</string>
+	<string name="problemPlaces">Progrem Places</string>
+	<string name="captured">Captured</string>
+	<string name="goodness">Goodness</string>
+	<string name="month1">Jan.</string>
+	<string name="month2">Feb.</string>
+	<string name="month3">Mar.</string>
+	<string name="month4">Apr.</string>
+	<string name="month5">May</string>
+	<string name="month6">June</string>
+	<string name="month7">July</string>
+	<string name="month8">Aug.</string>
+	<string name="month9">Sep.</string>
+	<string name="month10">Oct.</string>
+	<string name="month11">Nov.</string>
+	<string name="month12">Dec.</string>
+	<string name="call">Call</string>
+	<string name="edit">Edit</string>
 </resources>
